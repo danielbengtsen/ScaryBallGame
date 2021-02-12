@@ -6,6 +6,8 @@ public class BallScript : MonoBehaviour
 {
     Rigidbody rigidbody;
 
+    public GameObject camera;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -32,6 +34,8 @@ public class BallScript : MonoBehaviour
         {
             GetComponent<Rigidbody>().AddForce(Vector3.right * 100);
         }
+
+
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
