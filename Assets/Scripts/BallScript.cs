@@ -8,9 +8,11 @@ public class BallScript : MonoBehaviour
     public Transform camPivot;
     float heading = 0;
     public Transform cam;
+[SerializeField] private Rigidbody rigidBody;
+[SerializeField] private float speed;
 
     Vector2 input;
-    void Update()
+    void FixedUpdate()
 
     {
 
@@ -28,9 +30,9 @@ public class BallScript : MonoBehaviour
         camF = camF.normalized;
         camR = camR.normalized;
 
-        //transform.position += new Vector3(input.x,0,input.y) *Time.deltaTime”S5;
+        rigidBody.AddForce((camF * input.y + camR * input.x) * speed);
 
-        transform.position += (camF * input.y + camR * input.x) * Time.deltaTime * 5;
+        //transform.position += (camF * input.y + camR * input.x) * Time.deltaTime * 5;
 
     }
 
