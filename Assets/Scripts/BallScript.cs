@@ -4,42 +4,34 @@ using UnityEngine;
 
 public class BallScript : MonoBehaviour
 {
-    Rigidbody rigidbody;
 
-    public GameObject camera;
+    public Transform camPivot;
+    float heading = 0;
+    public Transform cam;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        rigidbody = GetComponent<Rigidbody>();
-    }
-
-
-    // Update is called once per frame
+    Vector2 input;
     void Update()
+
     {
-        if (Input.GetKeyDown(KeyCode.W))
-        {
-            GetComponent<Rigidbody>().AddForce(Vector3.forward * 100);
-        }
-        if (Input.GetKeyDown(KeyCode.S))
-        {
-            GetComponent<Rigidbody>().AddForce(Vector3.back * 100);
-        }
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            GetComponent<Rigidbody>().AddForce(Vector3.left * 100);
-        }
-        if (Input.GetKeyDown(KeyCode.D))
-        {
-            GetComponent<Rigidbody>().AddForce(Vector3.right * 100);
-        }
 
+        heading += Input.GetAxis("Mouse X") * Time.deltaTime * 180;
 
+        camPivot.rotation = Quaternion.Euler(0, heading, 0);
+        input = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+        input = Vector2.ClampMagnitude(input, 1);
 
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            GetComponent<Rigidbody>().AddForce(Vector3.up * 200);
-        }
+        Vector3 camF = cam.forward;
+        Vector3 camR = cam.right;
+
+        camF.y = 0;
+        camR.y = 0;
+        camF = camF.normalized;
+        camR = camR.normalized;
+
+        //transform.position += new Vector3(input.x,0,input.y) *Time.deltaTime”S5;
+
+        transform.position += (camF * input.y + camR * input.x) * Time.deltaTime * 5;
+
     }
+
 }
