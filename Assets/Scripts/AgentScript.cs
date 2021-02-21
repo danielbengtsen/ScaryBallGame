@@ -29,6 +29,6 @@ public class AgentScript : MonoBehaviour
         targetPos = ball.transform.position;
  
         navMeshAgent.SetDestination(targetPos);
-        animator.SetFloat("Speed", 0.7f);
+        animator.SetFloat("Speed", 0.6f);
     }
 }
