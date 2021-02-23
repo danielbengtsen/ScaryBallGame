@@ -13,7 +13,10 @@ public class AgentScript : MonoBehaviour
 
     Vector3 targetPos;
 
-    float ekstraSpeed;
+
+    float speed = 0.6f;
+ 
+ 
 
     // Start is called before the first frame update
     void Start()
@@ -31,7 +34,8 @@ public class AgentScript : MonoBehaviour
         targetPos = ball.transform.position;
 
         navMeshAgent.SetDestination(targetPos);
-        animator.SetFloat("Speed", 0.6f + ekstraSpeed);
-        ekstraSpeed += 0.001f;
+
+        animator.SetFloat("Speed", speed);
+        speed += 0.01f;
     }
 }
