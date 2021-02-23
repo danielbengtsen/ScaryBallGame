@@ -12,16 +12,12 @@ public class playSound : MonoBehaviour
     void Start()
     {
         audio = gameObject.GetComponent<AudioSource>();
-    }
-
-    void Update()
-    {
         StartCoroutine(PlaySound());
     }
 
     IEnumerator PlaySound()
     {
-        yield return new WaitForSeconds(Random.Range(5f, 10f));
+        yield return new WaitForSeconds(Random.Range(1f, 3f));
 
         clipIndex = Random.Range(0, clips.Length - 1);
         audio.PlayOneShot(clips[clipIndex], 1f);
