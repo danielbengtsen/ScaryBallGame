@@ -41,11 +41,8 @@ public class BallScript : MonoBehaviour
         rigidBody.AddForce((camF * input.y + camR * input.x) * speed);
 
         if(Input.GetButton("Jump") && canJump && isGrounded){
-            Debug.Log("jumping");
             rigidBody.AddForce(Vector3.up * jumpForce);
         }
-
-        //transform.position += (camF * input.y + camR * input.x) * Time.deltaTime * 5;
 
     }
 

@@ -19,7 +19,7 @@ public class playSound : MonoBehaviour
     {
         yield return new WaitForSeconds(Random.Range(1f, 3f));
 
-        clipIndex = Random.Range(0, clips.Length - 1);
+        clipIndex = Random.Range(0, clips.Length);
         audio.PlayOneShot(clips[clipIndex], 1f);
 
         yield return new WaitForSeconds(clips[clipIndex].length);
